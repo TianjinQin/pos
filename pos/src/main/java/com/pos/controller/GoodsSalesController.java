@@ -5,15 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.pos.model.GoodsSalesModel;
-import com.pos.service.IPrivilegeService;
-import com.pos.util.SpringApplicationUtil;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
+import com.pos.service.ICalculateService;
 
 /**
  *
@@ -24,29 +24,27 @@ import net.sf.json.JSONObject;
 @RequestMapping("/goodsSales")
 public class GoodsSalesController {
 
+	@Autowired
+	private ICalculateService calculateServiceImpl;
+
 	@RequestMapping("/sales")
 	public void goodsSales(String data) {
 
-		try {
-			Class clz = Class.forName("com.pos.service.impl.NormalPrivilegeServiceImpl");
-			IPrivilegeService service = (IPrivilegeService) SpringApplicationUtil.getBean(clz);
-			service.calculate(null);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		String originalStr = "['ITEM000001', 'ITEM000001', 'ITEM000001','ITEM000001','ITEM000001', 'ITEM000003-2','ITEM000005','ITEM000005', 'ITEM000005']";
+
+		data = str2JsonStr(originalStr);
 
 		JSONArray jsonArray = JSONArray.fromObject(data);
 		List<GoodsSalesModel> models = new ArrayList<GoodsSalesModel>();
 		for (int i = 0; i < jsonArray.size(); i++) {
 			JSONObject jsonObject = (JSONObject) jsonArray.get(i);
-
 			GoodsSalesModel model = new GoodsSalesModel();
 			model.setBarcode(String.valueOf(jsonObject.get("barcode")));
 			model.setNumber(jsonObject.getInt("number"));
-
 			models.add(model);
 		}
+		calculateServiceImpl.calculateGoods(models);
+
 	}
 
 	public static void main(String[] args) {

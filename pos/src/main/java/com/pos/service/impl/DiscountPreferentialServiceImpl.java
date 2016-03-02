@@ -3,21 +3,20 @@ package com.pos.service.impl;
 import org.springframework.stereotype.Service;
 
 import com.pos.model.GoodsSalesModel;
-import com.pos.service.IPrivilegeService;
+import com.pos.service.IPreferentialService;
 
 /**
- * 无优惠处理类
- *
+ * 95折优惠
+ * 
  * @author qintj
  *
  */
 @Service
-public class NormalPrivilegeServiceImpl implements IPrivilegeService {
+public class DiscountPreferentialServiceImpl implements IPreferentialService {
 
+	@Override
 	public String calculate(GoodsSalesModel model) {
 		// TODO Auto-generated method stub
-		System.out.println("ok");
-		return null;
+		return "95折优惠";
 	}
-
 }

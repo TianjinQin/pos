@@ -1,7 +1,9 @@
 package com.pos.service.impl;
 
+import org.springframework.stereotype.Service;
+
 import com.pos.model.GoodsSalesModel;
-import com.pos.service.IPrivilegeService;
+import com.pos.service.IPreferentialService;
 
 /**
  * 二选一优惠
@@ -9,11 +11,13 @@ import com.pos.service.IPrivilegeService;
  * @author qintj
  *
  */
-public class AlternativePrivilegeServiceImpl implements IPrivilegeService {
+@Service
+public class AlternativePreferentialServiceImpl implements IPreferentialService {
 
+	@Override
 	public String calculate(GoodsSalesModel model) {
 		// TODO Auto-generated method stub
-		return null;
+		return "二选一优惠";
 	}
 
 }

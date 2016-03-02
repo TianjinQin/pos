@@ -13,11 +13,10 @@ public class SystemEnv {
 	private static Map<String, String> map = new HashMap<String, String>();
 
 	static {
-		InputStream in = Thread.currentThread().getClass().getClassLoader().getResourceAsStream("");
+		InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("config.properties");
 		Properties prop = new Properties();
 		try {
 			prop.load(in);
-
 			Enumeration enumeration = prop.propertyNames();
 			while (enumeration.hasMoreElements()) {
 				String key = (String) enumeration.nextElement();
