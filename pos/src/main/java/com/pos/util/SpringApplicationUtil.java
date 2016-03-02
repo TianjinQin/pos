@@ -14,4 +14,8 @@ public class SpringApplicationUtil {
 	public static Object getBean(String beanName) {
 		return wac.getBean(beanName);
 	}
+
+	public static Object getBean(Class clz) {
+		return wac.getBean(clz);
+	}
 }

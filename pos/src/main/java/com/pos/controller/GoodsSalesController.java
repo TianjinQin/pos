@@ -27,9 +27,15 @@ public class GoodsSalesController {
 	@RequestMapping("/sales")
 	public void goodsSales(String data) {
 
-		IPrivilegeService service = (IPrivilegeService) SpringApplicationUtil
-				.getBean("pos.service.impl.NormalPrivilegeServiceImpl");
-		service.calculate(null);
+		try {
+			Class clz = Class.forName("com.pos.service.impl.NormalPrivilegeServiceImpl");
+			IPrivilegeService service = (IPrivilegeService) SpringApplicationUtil.getBean(clz);
+			service.calculate(null);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		JSONArray jsonArray = JSONArray.fromObject(data);
 		List<GoodsSalesModel> models = new ArrayList<GoodsSalesModel>();
 		for (int i = 0; i < jsonArray.size(); i++) {
