@@ -21,7 +21,7 @@ public class ClassUtil {
 	public static Method getSetMethod(Field field) {
 		Method m = null;
 		try {
-			m = field.getDeclaringClass().getMethod("set" + subFieldName(field.getName()));
+			m = field.getDeclaringClass().getMethod("set" + subFieldName(field.getName()), field.getType());
 		} catch (NoSuchMethodException | SecurityException e) {
 			e.printStackTrace();
 		}

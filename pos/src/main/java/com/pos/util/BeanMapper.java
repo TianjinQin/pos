@@ -20,7 +20,7 @@ public class BeanMapper<E> implements RowMapper<E> {
 	private Class<E> cls;
 
 	@SuppressWarnings("rawtypes")
-	private static Map<String, ClassSwitchTableTools> cacheMap = new ConcurrentHashMap<String, ClassSwitchTableTools>();
+	private static Map<Class, ClassSwitchTableTools> cacheMap = new ConcurrentHashMap<Class, ClassSwitchTableTools>();
 
 	private static final Map<Class, Object> primitiveDefault = new HashMap<Class, Object>(8);
 	private ClassSwitchTableTools<E> cwt;
@@ -39,7 +39,7 @@ public class BeanMapper<E> implements RowMapper<E> {
 	@SuppressWarnings("unchecked")
 	public BeanMapper(Class<E> cls) {
 		if (!cacheMap.containsKey(cls)) {
-			cacheMap.put(cls.getClass().getName(), new ClassSwitchTableTools<E>(cls));
+			cacheMap.put(cls, new ClassSwitchTableTools<E>(cls));
 		}
 		this.cls = cls;
 		this.cwt = cacheMap.get(cls);
@@ -74,7 +74,7 @@ public class BeanMapper<E> implements RowMapper<E> {
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return bean;
 	}
 
 	/**

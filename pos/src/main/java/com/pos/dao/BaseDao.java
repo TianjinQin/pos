@@ -4,21 +4,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.stereotype.Repository;
 
 /**
  * 数据访问基类 提供JdbcTemplate
- * 
+ *
  * @author qintj
  *
  */
-@Repository
 public class BaseDao {
 
-	@Autowired
 	private JdbcTemplate posJT;
 
 	public JdbcTemplate getPosJT() {
@@ -31,6 +27,7 @@ public class BaseDao {
 
 	public int execute(JdbcTemplate template, final String sql, final Object... args) {
 		return template.update(new PreparedStatementCreator() {
+			@Override
 			public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
 				PreparedStatement ps = connection.prepareStatement(sql);
 				for (int i = 0; i < args.length; i++) {

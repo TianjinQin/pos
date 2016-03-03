@@ -1,5 +1,7 @@
 package com.pos.dao;
 
+import java.util.List;
+
 import com.pos.entity.Goods;
 
 /**
@@ -17,4 +19,6 @@ public interface IGoodsDao {
 	 * @return
 	 */
 	Goods getGoodsByBarcode(String barcode);
+
+	List<Goods> getAll();
 }

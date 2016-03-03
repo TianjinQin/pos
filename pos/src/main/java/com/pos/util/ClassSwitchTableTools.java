@@ -118,11 +118,11 @@ public class ClassSwitchTableTools<E> {
 		if (cla.isPrimitive()) {
 			return Boolean.TRUE;
 		}
-		if (Number.class.isAssignableFrom(cla) || Boolean.class.isAssignableFrom(cls)
-				|| Integer.class.isAssignableFrom(cls) || String.class.isAssignableFrom(cls)
-				|| Character.class.isAssignableFrom(cls) || Long.class.isAssignableFrom(cls)
-				|| Double.class.isAssignableFrom(cls) || Float.class.isAssignableFrom(cls)
-				|| Date.class.isAssignableFrom(cls))
+		if (Number.class.isAssignableFrom(cla) || Boolean.class.isAssignableFrom(cla)
+				|| Integer.class.isAssignableFrom(cla) || String.class.isAssignableFrom(cla)
+				|| Character.class.isAssignableFrom(cla) || Long.class.isAssignableFrom(cla)
+				|| Double.class.isAssignableFrom(cla) || Float.class.isAssignableFrom(cla)
+				|| Date.class.isAssignableFrom(cla))
 			return Boolean.TRUE;
 		return Boolean.FALSE;
 	}

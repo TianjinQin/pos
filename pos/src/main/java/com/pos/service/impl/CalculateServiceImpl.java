@@ -8,7 +8,9 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pos.dao.IGoodsDao;
 import com.pos.dao.IPreferentialDao;
+import com.pos.entity.Goods;
 import com.pos.entity.Preferential;
 import com.pos.model.GoodsSalesModel;
 import com.pos.service.ICalculateService;
@@ -24,6 +26,9 @@ public class CalculateServiceImpl implements ICalculateService {
 	@Autowired
 	private IPreferentialService normalPreferentialServiceImpl;
 
+	@Autowired
+	private IGoodsDao goodsDao;
+
 	@Override
 	public void calculateGoods(List<GoodsSalesModel> models) {
 		if (CollectionUtils.isEmpty(models)) {
@@ -34,7 +39,9 @@ public class CalculateServiceImpl implements ICalculateService {
 		for (Iterator iterator = models.iterator(); iterator.hasNext();) {
 			GoodsSalesModel goodsSalesModel = (GoodsSalesModel) iterator.next();
 			// 通过条形码,获取具体优惠处理类
-			sb.append(calculate(goodsSalesModel)).append("\n");
+			// sb.append(calculate(goodsSalesModel)).append("\n");
+			Goods goods = goodsDao.getGoodsByBarcode(goodsSalesModel.getBarcode());
+			System.out.println(goods.getName());
 		}
 		System.out.println(sb);
 	}
@@ -53,5 +60,15 @@ public class CalculateServiceImpl implements ICalculateService {
 			}
 		}
 		return normalPreferentialServiceImpl.calculate(model);
+	}
+
+	@Override
+	public Goods getGoodsByBarcode(String barcode) {
+		List<Goods> list = goodsDao.getAll();
+		for (Iterator iterator = list.iterator(); iterator.hasNext();) {
+			Goods goods = (Goods) iterator.next();
+			System.out.println(goods.getName());
+		}
+		return goodsDao.getGoodsByBarcode(barcode);
 	}
 }
