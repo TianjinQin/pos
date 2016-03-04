@@ -6,10 +6,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<!-- 命名空间 -->
 	<typeAliases>
 		<typeAlias alias="Goods" type="com.pos.entity.Goods" />
+		<typeAlias alias="Preferential" type="com.pos.entity.Preferential" />
 	</typeAliases>
 
 	<!-- 映射map -->
 	<mappers>
 		<mapper resource="mapper/GoodsMapper.xml" />
+		<mapper resource="mapper/PreferentialMapper.xml" />
 	</mappers>
 </configuration>

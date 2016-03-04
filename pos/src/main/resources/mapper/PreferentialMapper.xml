@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pos.dao.IPreferentialDao">
+
+	<select id="getPreferentialsByBarcode" resultType="Preferential">
+		SELECT
+		preferential.* from goods_preferential join preferential on
+		goods_preferential.`code`=preferential.`code` and
+		goods_preferential.barcode=#{barcode} ORDER BY preferential.priority
+		desc
+	</select>
+	<select id="getAllPreferentials" resultType="Preferential">
+		SELECT * from
+		preferential ORDER BY preferential.priority desc
+	</select>
+
+
+</mapper>
