@@ -73,7 +73,15 @@ public class ClassSwitchTableTools<E> {
 			if (Modifier.isStatic(field.getModifiers()))
 				continue;
 			if (isSampleType(field) && haveSetAndGet(field)) {
-				String dbName = strClass2Db(field.getName());
+				Annotation[] anno = field.getAnnotations();
+				String dbName = null;
+				for (Annotation annotation : anno) {
+					if (annotation.annotationType().isAssignableFrom(CommonField.class)) {
+						dbName = ((CommonField) annotation).columnName();
+					}
+				}
+				if (StringUtils.isBlank(dbName))
+					dbName = strClass2Db(field.getName());
 				classTypeMap.put(field.getName(), dbName);
 				PropertyColumn pro = new PropertyColumn();
 				pro.setColumnName(dbName);
@@ -173,7 +181,6 @@ public class ClassSwitchTableTools<E> {
 	}
 
 	public static void main(String[] args) {
-		String s = "asdDbhJk";
-		System.out.println(strClass2Db(s));
+
 	}
 }

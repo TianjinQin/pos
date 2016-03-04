@@ -11,7 +11,7 @@ public class Preferential {
 	private Long id;
 	private String code;
 	private String name;
-	private String priority;
+	private Integer priority;
 
 	public Long getId() {
 		return id;
@@ -37,12 +37,14 @@ public class Preferential {
 		this.name = name;
 	}
 
-	public String getPriority() {
+	public Integer getPriority() {
 		return priority;
 	}
 
-	public void setPriority(String priority) {
+	public void setPriority(Integer priority) {
 		this.priority = priority;
 	}
+
+	
 
 }
