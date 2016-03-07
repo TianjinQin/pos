@@ -18,7 +18,7 @@
     http://www.pos.cn/schema/people/people-1.0.xsd
     ">
 
-	<context:property-placeholder location="file:src/main/resources/*.properties"
+	<context:property-placeholder location="classpath:conf/*.properties"
 		file-encoding="utf-8" />
 	<context:component-scan base-package="com.pos" />
 	<!-- 打开aop 注解 -->
@@ -51,7 +51,7 @@
 		<property name="configLocation" value="classpath:conf/mybatis-config.xml" />
 	</bean>
 
-	<!-- configLocation为mybatis属性 mapperLocations为所有mapper -->
+	<!-- configLocation为mybatis属性  mapperLocations为所有mapper -->
 
 	<!-- spring与mybatis整合配置，扫描所有dao -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

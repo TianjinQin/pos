@@ -38,7 +38,7 @@ public class CalculateServiceImpl implements ICalculateService {
 		// calculate(goodsSalesModel, info);
 		// }
 		// info.print();
-
+		System.out.println("ok");
 		People people = (People) SpringApplicationUtil.getBean("jim");
 		System.out.println(people.getName());
 
