@@ -5,15 +5,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.pos.model.GoodsSalesModel;
+import com.pos.schema.People;
 import com.pos.service.ICalculateService;
+import com.pos.util.SpringApplicationUtil;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 /**
  *
@@ -30,6 +32,9 @@ public class GoodsSalesController {
 	@RequestMapping("/sales")
 	public void goodsSales(String data) {
 
+		People people=(People) SpringApplicationUtil.getBean("jim");
+		
+		
 		String originalStr = "['ITEM000001', 'ITEM000001', 'ITEM000001','ITEM000001','ITEM000001', 'ITEM000003-2','ITEM000005','ITEM000005', 'ITEM000005']";
 
 		data = str2JsonStr(originalStr);

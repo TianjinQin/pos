@@ -6,9 +6,6 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<context:property-placeholder location="classpath:/*.properties"
-		file-encoding="utf-8" />
-	<context:component-scan base-package="com.pos" />
 	<mvc:annotation-driven />
 	<!-- 全局异常处理 -->
 	<bean class="com.pos.common.exception.GlobalException"></bean>
