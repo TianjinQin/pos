@@ -24,7 +24,6 @@ public class BeanMapper<E> implements RowMapper<E> {
 
 	private static final Map<Class, Object> primitiveDefault = new HashMap<Class, Object>(8);
 	private ClassSwitchTableTools<E> cwt;
-	ClassSwitchTableTools<E> fClassSwitchTableTools;
 
 	static {
 		primitiveDefault.put(Boolean.class, Boolean.FALSE);
