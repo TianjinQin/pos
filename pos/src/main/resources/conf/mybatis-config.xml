@@ -14,4 +14,14 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mapper/GoodsMapper.xml" />
 		<mapper resource="mapper/PreferentialMapper.xml" />
 	</mappers>
+<!-- 	<properties> -->
+<!-- 		<property name="dialect" value="oracle" /> -->
+<!-- 	</properties> -->
+	<plugins>
+		<plugin interceptor="com.pos.demo.PaginationInterceptor">
+			<property name="dialect" value="mysql" />
+			<property name="pageSqlId" value=".*listPage.*" />
+		</plugin>
+	</plugins>
+
 </configuration>

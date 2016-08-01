@@ -25,6 +25,10 @@ public class CalculateServiceImpl implements ICalculateService {
 	@Autowired
 	private IPreferentialService normalPreferentialServiceImpl;
 
+	public CalculateServiceImpl() {
+		BeanAction.register("x", this);
+	}
+
 	@Override
 	public void calculateGoods(List<GoodsSalesModel> models) {
 		// if (CollectionUtils.isEmpty(models)) {
@@ -38,6 +42,7 @@ public class CalculateServiceImpl implements ICalculateService {
 		// calculate(goodsSalesModel, info);
 		// }
 		// info.print();
+		List<Preferential> pList =preferentialDao.getPreferentialsByBarcode("ITEM000005");
 		System.out.println("ok");
 		People people = (People) SpringApplicationUtil.getBean("jim");
 		System.out.println(people.getName());

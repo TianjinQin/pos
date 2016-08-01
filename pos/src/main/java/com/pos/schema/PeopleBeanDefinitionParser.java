@@ -1,7 +1,10 @@
 package com.pos.schema;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.PropertyValue;
+import org.springframework.beans.factory.config.RuntimeBeanReference;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
+import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.beans.factory.xml.AbstractSingleBeanDefinitionParser;
 import org.springframework.beans.factory.xml.ParserContext;
 import org.w3c.dom.Element;
@@ -21,7 +24,18 @@ public class PeopleBeanDefinitionParser extends AbstractSingleBeanDefinitionPars
 	@Override
 	protected void doParse(Element element, ParserContext parserContext, BeanDefinitionBuilder builder) {
 		// TODO Auto-generated method stub
-		super.doParse(element, parserContext, builder);
+		// doParse(element, parserContext, builder);
+
+		element.getAttribute("");
+		RootBeanDefinition definition = new RootBeanDefinition();
+
+		PropertyValue pValue = new PropertyValue("sd", "");
+
+		RuntimeBeanReference reference = new RuntimeBeanReference("");
+		definition.getPropertyValues().addPropertyValue("", reference);
+		definition.setSource(element);
+
+		parserContext.getRegistry().registerBeanDefinition("", definition);
 	}
 
 	@Override

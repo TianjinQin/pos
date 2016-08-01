@@ -13,9 +13,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.PropertyValue;
-import org.springframework.beans.factory.config.RuntimeBeanReference;
-import org.springframework.beans.factory.support.RootBeanDefinition;
 
 public class ClassSwitchTableTools<E> {
 
@@ -33,11 +30,6 @@ public class ClassSwitchTableTools<E> {
 	public ClassSwitchTableTools(Class<E> cls) {
 		this.cls = cls;
 		init();
-		RootBeanDefinition bd = new RootBeanDefinition(String.class);
-		RuntimeBeanReference reference = new RuntimeBeanReference("");
-
-		PropertyValue pv = new PropertyValue("", reference);
-		bd.getPropertyValues().addPropertyValue(pv);
 	}
 
 	/**
